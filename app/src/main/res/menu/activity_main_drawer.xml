@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/paciente"
+            android:title="@string/menu_pacientes" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/doctor"
+            android:title="@string/menu_doctores" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/clinica"
+            android:title="@string/menu_clinicas" />
+    </group>
+</menu>
