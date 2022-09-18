@@ -86,15 +86,15 @@
             android:layout_below="@id/item_edad"
             android:textSize="20sp" />
 
-        <ImageButton android:id="@+id/btnEliminar"
+        <ImageButton android:id="@+id/btnDelete"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/ic_baseline_delete_forever_24"
             android:backgroundTint="@color/white"
-            android:layout_toEndOf="@id/btnModificar"
+            android:layout_toEndOf="@id/btnEdit"
             android:layout_below="@id/item_image"/>
 
-        <ImageButton android:id="@+id/btnModificar"
+        <ImageButton android:id="@+id/btnEdit"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/modificar"

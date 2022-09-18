@@ -43,15 +43,22 @@ class HomeFragment : Fragment() {
         }
 
         binding.btnGuardar.setOnClickListener {
-            guardarEnArchivo(binding.txtMensaje.text.toString())
-        }
-
-        binding.btnRecuperar.setOnClickListener {
-            abrirContenidoArchivo()
-        }
-
-        binding.btnEliminar.setOnClickListener {
-            resetEnArchivo("")
+            if (binding.itemNombre.text.isBlank() || binding.itemApellidos.text.isBlank() ||
+                binding.itemEdad.text.isBlank() || binding.itemGenero.text.isBlank() ||
+                binding.itemAltura.text.isBlank() || binding.itemPeso.text.isBlank()
+            ) {
+                Toast.makeText(
+                    context,
+                    "Campo de texto vacio, revise los campos",
+                    Toast.LENGTH_LONG
+                ).show()
+            } else {
+                var constructMensaje =
+                    "${binding.itemNombre.text.toString()},${binding.itemApellidos.text.toString()}," +
+                            "${binding.itemEdad.text.toString()},${binding.itemGenero.text.toString()}," +
+                            "${binding.itemAltura.text.toString()},${binding.itemPeso.text.toString()}\n"
+                guardarEnArchivo(constructMensaje)
+            }
         }
 
         return root
@@ -62,51 +69,41 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-    fun resetEnArchivo(mensaje:String){
+    fun guardarEnArchivo(mensaje: String) {
         try {
-            var archivo = OutputStreamWriter(this.requireContext().openFileOutput("datos.txt",
-                AppCompatActivity.MODE_PRIVATE
-            ))
+            var archivo = OutputStreamWriter(
+                this.requireContext().openFileOutput(
+                    "datos.txt",
+                    AppCompatActivity.MODE_APPEND
+                )
+            )
 
-            archivo.write(mensaje)
+            archivo.append(mensaje)
             archivo.flush()
             archivo.close()
 
+            binding.itemNombre.setText("")
+            binding.itemApellidos.setText("")
+            binding.itemEdad.setText("")
+            binding.itemGenero.setText("")
+            binding.itemAltura.setText("")
+            binding.itemPeso.setText("")
+
             Toast.makeText(context, "Mensaje actualizado", Toast.LENGTH_LONG).show()
-            binding.txtMensaje.setText("")
-        }catch (e: Exception){
+            //binding.txtMensaje.setText("")
+        } catch (e: Exception) {
             Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
         }
     }
 
-    fun guardarEnArchivo(mensaje:String){
+    fun abrirContenidoArchivo() {
         try {
-            var archivo = OutputStreamWriter(this.requireContext().openFileOutput("datos.txt",
-                AppCompatActivity.MODE_PRIVATE
-            ))
+            var archivo =
+                BufferedReader(InputStreamReader(this.requireContext().openFileInput("datos.txt")))
 
-            archivo.write(mensaje)
-            archivo.flush()
+            Toast.makeText(context, archivo.readLine(), Toast.LENGTH_LONG).show()
             archivo.close()
-
-            Toast.makeText(context, "Mensaje actualizado", Toast.LENGTH_LONG).show()
-            binding.txtMensaje.setText("")
-        }catch (e: Exception){
-            Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
-        }
-    }
-
-    fun abrirContenidoArchivo(){
-        try {
-            var archivo = BufferedReader(InputStreamReader(this.requireContext().openFileInput("datos.txt")))
-            /* Al incluir BufferedReader dentro de la creación del objeto "archivo", se le agrego
-               un método de lecture de LINEA completa (cadena)
-            */
-
-            Toast.makeText(context, "Mensaje recuperado", Toast.LENGTH_LONG).show()
-            binding.txtMensaje.setText((archivo.readLine()))
-            archivo.close()
-        }catch (e: Exception){
+        } catch (e: Exception) {
             Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
         }
     }

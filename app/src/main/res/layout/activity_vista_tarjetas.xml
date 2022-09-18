@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CardViewer">
+    tools:context=".VistaTarjetas">
 
     <TextView
         android:id="@+id/txtTitulo"
@@ -22,18 +22,101 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtTitulo"
+        android:layout_below="@id/Edicion"
         android:layout_marginTop="20dp"
         />
 
-    <Button
-        android:id="@+id/btnRegresar"
-        android:layout_width="wrap_content"
+
+
+    <RelativeLayout
+        android:id="@+id/Edicion"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Regresar"
-        android:layout_below="@id/recyclerView"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true"
-        />
+        android:layout_below="@id/txtTitulo"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/item_nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:hint="Nombre"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/item_apellidos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/item_nombre"
+            android:layout_toRightOf="@id/item_nombre"
+            android:layout_marginLeft="5dp"
+            android:hint="Apellidos"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/item_edad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_apellidos"
+            android:hint="Edad"
+            android:inputType="number"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/item_genero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_apellidos"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@id/item_edad"
+            android:hint="Genero"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/item_altura"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_edad"
+            android:hint="Altura"
+            android:inputType="numberDecimal"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/item_peso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_edad"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@id/item_altura"
+            android:hint="Peso"
+            android:inputType="number"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnActualizar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Actualizar"
+            android:layout_above="@id/btnRegresar"
+            android:layout_marginLeft="30dp"
+            android:layout_toEndOf="@id/item_peso"
+            />
+
+        <Button
+            android:id="@+id/btnRegresar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Regresar"
+            android:layout_below="@id/item_edad"
+            android:layout_marginLeft="30dp"
+            android:layout_toEndOf="@id/item_peso"
+            />
+    </RelativeLayout>
 
 </RelativeLayout>
