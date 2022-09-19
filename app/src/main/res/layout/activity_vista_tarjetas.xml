@@ -18,6 +18,20 @@
         android:fontFamily="@font/bebas"
         />
 
+    <TextView
+        android:id="@+id/txtInstrucciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="5dp"
+        android:layout_below="@id/txtTitulo"
+        android:text="Para modificar / elminar favor de usar sus correspondientes botones"
+        android:textSize="20dp"
+        android:textColor="#4019a2"
+        android:fontFamily="@font/bebas"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
@@ -32,7 +46,7 @@
         android:id="@+id/Edicion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtTitulo"
+        android:layout_below="@id/txtInstrucciones"
         android:padding="16dp">
 
         <EditText

@@ -97,6 +97,7 @@
         <Button android:id="@+id/btnGuardar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="15sp"
             android:text="Guardar"
             />
 
@@ -105,6 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginLeft="5dp"
+            android:padding="15sp"
             android:text="Visualizar"
             />
     </LinearLayout>
